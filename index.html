@@ -6,10 +6,23 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 </head>
 <body>
+
+    <script>
+        $(document).on("change", ".file_multi_video", function (evt) {
+                var $source = $('#video_here');
+                $source[0].src = URL.createObjectURL(this.files[0]);
+                debugger
+                $source.parent()[0].load();
+            });
+    </script>
+
     <h1>The File API In Javascript</h1>
     <form action="./upload" method="post" enctype="multipart/form-data">
-        <input type="file" name="inpFile" id="inpFile">
+        <input type="file" name="file[]" class="file_multi_video" accept="video/*" id="inpFile">
         <button type="submit">Upload Files</button>
     </form>
+    <video width="400" controls>
+        <source id="video_here">
+    </video>
 </body>
 </html>
