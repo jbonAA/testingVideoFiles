@@ -1,0 +1,24 @@
+{
+  "name": "testingVideoFiles",
+  "version": "1.0.0",
+  "description": "Splitting and Calculating Objects in Motion from Video Frames over time",
+  "main": "testing.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "aa": "node ./testing.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jbonAA/testingVideoFiles.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jbonAA/testingVideoFiles/issues"
+  },
+  "homepage": "https://github.com/jbonAA/testingVideoFiles#readme",
+  "dependencies": {
+    "ffmpeg-extract-frames": "^2.0.2"
+  }
+}
