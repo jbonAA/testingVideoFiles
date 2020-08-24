@@ -84,21 +84,15 @@
                 let vidSave = document.getElementById('vid2')
                 let recorder = new MediaRecorder(mediaStreamObj)
                 let chunks = [];
-                recorder.SetOutputFormat(OutputFormat.Default)
-                recorder.SetVideoFrameRate(60);
-                let focalLength = recorder.getFocalLength()
-                let displ = document.getElementById('focal')
-                focal.innerHTML = focalLength
-
-                let chinks = [];
 
                 start.addEventListener('click', (ev) => {
                     recorder.start();
-                    console.log(mediaRecorder.state)
+                    debugger
+                    console.log(recorder.state)
                 });
                 stop.addEventListener('click', (ev) => {
                     recorder.stop();
-                    console.log(mediaRecorder.state)
+                    console.log(recorder.state)
                 })
                 recorder.ondataavailable = function(ev) {
                     chunks.push(ev.data)
