@@ -22,6 +22,48 @@
         // }
 
         // console.log(checkURL(testingString))
+        const fetch = require('node-fetch');
+
+            module.exports = {
+                name: 'hguild',
+                aliases: ['hg'],
+                description: 'Shows info about a hypixel guild!',
+                guildOnly: true,
+                args: true,
+                usage: '<player>',
+                execute(message, args) {
+                    var ruuid = [];
+
+                    const guildName = args[0];
+                    message.channel.send('Please wait, checking API').then((msg) => {
+                        fetch(`https://api.hypixel.net/guild?key=[REMOVED]&name=${guildName}`)
+                            .catch((err) => message.channel.send(err))
+                            .then((res) => res.json())
+                            .catch((err) => message.channel.send(err))
+                            .then((json) => {
+                                console.log(json);
+
+                                msg.edit('Here is about your guild!');
+
+                                for (const guild of json.guild.members) {
+                                    const rawUsername = guild.uuid;
+
+                                    fetch(`https://api.mojang.com/user/profiles/${rawUsername}/names`)
+                                        .catch((err) => message.channel.send(err))
+                                        .then((res) => res.json())
+                                        .catch((err) => message.channel.send(err))
+                                        .then((json) => {
+                                            console.log(json[0].name);
+                                            if (json.name == null || json.status == 'ERR') {
+                                            }
+                                            var testList = [json[0].name];
+                                            message.channel.send(testList);
+                                        });
+                                }
+                            });
+                    });
+                },
+            };
     </script>
 
     <h1>The File API In Javascript</h1>
